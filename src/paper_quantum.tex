@@ -199,9 +199,9 @@ H_2 = i\begin{pmatrix}1&0&0\\0&0&0\\0&0&-1\end{pmatrix},
 \]
 together with the ladder operators
 \[
-E_{12} = i\begin{pmatrix}0&1&0\\-1&0&0\\0&0&0\end{pmatrix},\;
-E_{13} = i\begin{pmatrix}0&0&1\\0&0&0\\-1&0&0\end{pmatrix},\;
-E_{23} = i\begin{pmatrix}0&0&0\\0&0&1\\0&-1&0\end{pmatrix},
+E_{12} = \begin{pmatrix}0&1&0\\-1&0&0\\0&0&0\end{pmatrix},\;
+E_{13} = \begin{pmatrix}0&0&1\\0&0&0\\-1&0&0\end{pmatrix},\;
+E_{23} = \begin{pmatrix}0&0&0\\0&0&1\\0&-1&0\end{pmatrix},
 \]
 and their $\mathfrak{su}(3)$ commutators.
 
@@ -369,9 +369,32 @@ $a_2 B = S$ gives $a_2 a_1^{-1} I = S$, implying $S$ is a scalar
 multiple of the identity -- a contradiction. Hence $\text{CNOT}$ is
 not a tensor product, and $\text{CNOT} \notin \SU(3)\times\SU(3)$.
 
-Since $\text{CNOT} \notin \SU(3) \times \SU(3)$, the group $G$ is strictly
-larger than $\SU(3) \times \SU(3)$. Therefore $L$ strictly contains
-$\mathfrak{su}(3)_A \oplus \mathfrak{su}(3)_B$.
+We show instead that an adjoint conjugate of a local generator lies
+outside $\mathfrak{su}(3)_A \oplus \mathfrak{su}(3)_B$. Let
+$J_B^z = I \otimes H_1 \in \mathfrak{su}(3)_B$. From the explicit
+conjugation above,
+\[
+\Ad_{\text{CNOT}}(J_B^z)
+= \begin{pmatrix} H_1 & 0 & 0 \\ 0 & S H_1 S^{-1} & 0 \\
+0 & 0 & S^2 H_1 S \end{pmatrix},
+\]
+with $H_1 = i\,\operatorname{diag}(0,1,-1)$, hence
+$S H_1 S^{-1} = i\,\operatorname{diag}(-1,0,1)$ and
+$S^2 H_1 S = i\,\operatorname{diag}(1,-1,0)$. Any element of
+$\mathfrak{su}(3)_A \oplus \mathfrak{su}(3)_B$ has, in this
+$3\times 3$ block decomposition, diagonal blocks
+$X_{ii} I_{\mathbb C^3} + Y$ with a common $Y \in \mathfrak{su}(3)_B$
+and diagonal entries $X_{ii}$ of $X \in \mathfrak{su}(3)_A$; therefore any
+two diagonal blocks differ by a scalar multiple of the identity. Here
+\[
+S H_1 S^{-1} - H_1
+= i\,\operatorname{diag}(-1,-1,2),
+\]
+which is not a scalar multiple of the identity. Thus
+$\Ad_{\text{CNOT}}(J_B^z) \notin \mathfrak{su}(3)_A \oplus
+\mathfrak{su}(3)_B$. Since $L$ is the Lie algebra of a group containing
+CNOT, it is closed under $\Ad_{\text{CNOT}}$, so $L$ contains this element
+and strictly contains $\mathfrak{su}(3)_A \oplus \mathfrak{su}(3)_B$.
 
 By Corollary~\ref{cor:su3su3max}, $\mathfrak{su}(3)_A \oplus
 \mathfrak{su}(3)_B$ is a maximal subalgebra of $\mathfrak{su}(9)$.

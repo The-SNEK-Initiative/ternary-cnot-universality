@@ -363,12 +363,10 @@ of $Y$ gives multiplicity $3 \times 3 = 9$; other zero combinations add
 multiples of 3).
 
 The eigenvalue $0$ of $G$ has multiplicity $5$, which is not divisible by 3.
-Therefore $G \notin \mathfrak{so}(3)_A \oplus \mathfrak{so}(3)_B$, and
-consequently $\text{CNOT} \notin SO(3) \times SO(3)$.
-
-Since $\text{CNOT} \notin SO(3) \times SO(3)$, the group $G$ is strictly
-larger than $SO(3) \times SO(3)$. Therefore $L$ strictly contains
-$\mathfrak{so}(3)_A \oplus \mathfrak{so}(3)_B$.
+Therefore $G \notin \mathfrak{so}(3)_A \oplus \mathfrak{so}(3)_B$. But $G =
+\Ad_{\text{CNOT}}(J_B^z)$ with $J_B^z \in \mathfrak{so}(3)_B$, and CNOT
+normalizes the generated Lie algebra $L$, so $G \in L$. Hence $L$ strictly
+contains $\mathfrak{so}(3)_A \oplus \mathfrak{so}(3)_B$.
 
 By Corollary~\ref{cor:so3so3max}, $\mathfrak{so}(3)_A \oplus
 \mathfrak{so}(3)_B$ is a maximal subalgebra of $\mathfrak{so}(9)$.
