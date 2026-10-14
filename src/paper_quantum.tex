@@ -18,6 +18,7 @@
 \newcommand{\Ad}{\operatorname{Ad}}
 \newcommand{\Lie}{\operatorname{Lie}}
 \newcommand{\GL}{\operatorname{GL}}
+\newcommand{\AGL}{\operatorname{AGL}}
 \newcommand{\SL}{\operatorname{SL}}
 \newcommand{\PGL}{\operatorname{PGL}}
 \newcommand{\SU}{\operatorname{SU}}
@@ -294,18 +295,20 @@ is a maximal subalgebra of $\mathfrak{su}(mn)$. In Dynkin's
 classification~\cite{dynkin1952}, this is a \emph{non-regular
 non-simple} subalgebra (Type~III) of the Type~A series.
 The embedding corresponds to the branching rule
-$\mathfrak{su}(mn) \downarrow \mathfrak{su}(m)\oplus\mathfrak{su}(n)$
-where the adjoint representation of $\mathfrak{su}(mn)$ decomposes as
+$\mathfrak{su}(mn) \downarrow \mathfrak{su}(m)\oplus\mathfrak{su}(n)$,
+under which the adjoint representation of $\mathfrak{su}(mn)$ decomposes as
 \[
 (\mathfrak{su}(m) \oplus \mathfrak{su}(n)) \oplus
-(\mathbb{C}^m \otimes \overline{\mathbb{C}}^n) \oplus
-(\overline{\mathbb{C}}^m \otimes \mathbb{C}^n),
+(\mathfrak{su}(m) \otimes \mathfrak{su}(n)),
 \]
-and the additional terms are irreducible and not contained in the
-direct sum. The exceptional cases $m=2$ and $m=4$ are excluded because
-$\mathfrak{su}(2)$ is not of Type~A in the relevant sense and
-$\mathfrak{su}(4) \cong \mathfrak{so}(6)$ has different branching rules
-that can affect maximality.
+where $\mathfrak{su}(m)\otimes\mathfrak{su}(n)$ is an irreducible summand
+(of dimension $(m^2-1)(n^2-1)$) not contained in
+$\mathfrak{su}(m)\oplus\mathfrak{su}(n)$. In Dynkin's classification of
+maximal subalgebras (the tensor-product $A_{m-1}\times A_{n-1}\subset
+A_{mn-1}$), the embedding $\mathfrak{su}(m)\oplus\mathfrak{su}(n)\subset
+\mathfrak{su}(mn)$ is maximal for integers $m,n\ge3$ (up to the obvious
+order and the standard $(2,2)$ coincidence which does not arise here);
+the cases used in this paper are $(m,n)=(9,3),(3,3)$.
 \end{lemma}
 
 \begin{proof}
@@ -431,26 +434,23 @@ the embedding $\mathfrak{su}(9)\oplus\mathfrak{su}(3) \to
 subalgebra of $\mathfrak{su}(27)$.
 
 We claim that $\mathfrak{su}(9)_{AC}$ is not contained in
-$\mathfrak{su}(9)_{AB}\oplus\mathfrak{su}(3)_C$. To see this, suppose
-$G \in \mathfrak{su}(9)_{AC}$ lies in the direct sum. Then
+$\mathfrak{su}(9)_{AB}\oplus\mathfrak{su}(3)_C$. Every element of
+$\mathfrak{su}(9)_{AC}$ has, in the $3\times3$ block decomposition relative
+to qutrit $A$, the form $\sum_{i=0}^{2} |i\rangle\langle i|_A \otimes
+I_B \otimes M_i$ with $M_i \in \mathfrak{su}(3)$; for instance
+$G = \Ad_{\text{CNOT}_{AC}}(J_C^z)$ has this form with
+$M_i = S^i H_1 S^{-i}$, which are distinct for $i=0,1,2$. Suppose such a
+$G$ also lies in the direct sum, so that
 $G = H_{AB} \otimes I_C + I_{AB} \otimes K_C$ with
-$H_{AB} \in \mathfrak{su}(9)$ and $K_C \in \mathfrak{su}(3)$. Taking
-the partial trace over qutrit $C$ (which traces out the $C$ degrees of
-freedom) gives $\operatorname{tr}_C(G) = 3 H_{AB}$ (since
-$\operatorname{tr}_C(I_C) = 3$ and $\operatorname{tr}_C(K_C) = 0$ because
-$\mathfrak{su}(3)$ elements are traceless). Equivalently,
-$H_{AB} = \frac13 \operatorname{tr}_C(G)$.
-
-Now $G$ acts non-trivially on qutrit $A$ through $\mathfrak{su}(3)_A$
-(the common wire) and on qutrit $C$ through $\mathfrak{su}(3)_C$,
-with qutrit $B$ as spectator. Explicitly, $\operatorname{tr}_C(G)$ is
-the partial trace of an operator that couples $A$ and $C$ but acts
-trivially on $B$, so $\operatorname{tr}_C(G)$ has support only on
-qutrit $A$ (not on $B$). But any element of $\mathfrak{su}(9)_{AB}$
-generally has non-trivial support on both $A$ and $B$. For
-$\mathfrak{su}(9)_{AC}$ elements, the partial trace over $C$ yields
-traceless $\mathfrak{su}(3)$ operators on $A$ alone, which do not
-generate the full $\mathfrak{su}(9)_{AB}$. Hence
+$H_{AB} \in \mathfrak{su}(9)$ and $K_C \in \mathfrak{su}(3)$. Taking the
+partial trace over qutrit $C$ gives $\operatorname{tr}_C(G) = 3 H_{AB}$
+(the $K_C$ term contributes $I_B\operatorname{tr}(K_C) = 0$ because
+$\mathfrak{su}(3)$ elements are traceless). But since each $M_i$ is
+traceless,
+$\operatorname{tr}_C(G) = \sum_i |i\rangle\langle i|_A \otimes
+I_B \operatorname{tr}(M_i) = 0$, so $H_{AB} = 0$. Then
+$G = I_{AB} \otimes K_C$ has all $A$-blocks equal to $I_B \otimes K_C$,
+contradicting the distinct blocks $I_B \otimes M_i$ of $G$. Hence
 $\mathfrak{su}(9)_{AC} \not\subset \mathfrak{su}(9)_{AB}
 \oplus \mathfrak{su}(3)_C$.
 
@@ -673,10 +673,10 @@ the determinant providing the splitting, and $T_{\text{inv}}$ provides
 an element of determinant $2$ (a generator of $\GF(3)^\times \cong C_2$),
 the combined group is the full $\GL(3,3)$.
 
-The group acts transitively on the $27$ non-zero vectors of $\GF(3)^3$
+The group acts transitively on the $26$ non-zero vectors of $\GF(3)^3$
 (the zero vector $|000\rangle$ is a fixed point). The stabilizer of any
-non-zero basis state is a maximal parabolic subgroup of $\GL(3,3)$
-isomorphic to $\GL(2,3) \ltimes \GF(3)^2$ of order $2 \cdot 144 = 288$,
+non-zero basis state is isomorphic to the affine group
+$\GL(2,3) \ltimes \GF(3)^2 \cong \AGL(2,3)$ of order $48 \cdot 9 = 432$,
 while the stabilizer of $|000\rangle$ is the full $\GL(3,3)$.
 \end{proof}
 
@@ -699,7 +699,9 @@ $S_{27}$ acting on the basis states (excluding the fixed point
 $|000\rangle$). Its linear action on $\mathbb{C}^{27}$ preserves the
 decomposition of $\mathbb{C}^{27}$ into the all-ones vector (the fixed
 point under $\GL(3,3)$) and its 26-dimensional orthogonal complement.
-The $\GL(3,3)$ action on this 26-dimensional subspace is irreducible.
+The $\GL(3,3)$ action on this 26-dimensional subspace is not
+irreducible: it decomposes as a direct sum of three irreducible
+representations (of dimensions $1$, $12$, and $13$).
 
 The Lie algebra $\mathfrak{su}(27)$ contains the Lie algebra generated
 by the permutation matrices of $\GL(3,3)$. However, the continuous

@@ -377,6 +377,7 @@ $L = \mathfrak{so}(9)$.
 \end{proof}
 
 \subsection{Explicit Commutator Verification}
+\label{sec:explicitcomm}
 
 The maximal subalgebra argument above is sufficient for the proof, but
 we can also verify directly that the CNOT generator couples the two wires.
@@ -394,9 +395,9 @@ shift, we obtain
 = \begin{pmatrix} L_z & 0 & 0 \\ 0 & S L_z S^{-1} & 0 \\
 0 & 0 & S^2 L_z S \end{pmatrix}.
 \]
-A brief computation gives $S L_z S^{-1} = L_y$ and
-$S^2 L_z S = L_x$, so this becomes
-$\operatorname{diag}(L_z, L_y, L_x)$ in the $3 \times 3$ block
+A brief computation gives $S L_z S^{-1} = L_x$ and
+$S^2 L_z S = L_y$, so this becomes
+$\operatorname{diag}(L_z, L_x, L_y)$ in the $3 \times 3$ block
 decomposition.
 
 This element is not a pure tensor $I \otimes (\cdot)$: it has different
@@ -447,12 +448,12 @@ G = \Ad_{\text{CNOT}_{AC}}(J_C^z) = \text{CNOT}_{AC} \cdot (I \otimes I
 In the $3\times 3$ block decomposition relative to wire $A$ (as in
 Section~\ref{sec:explicitcomm}),
 \[
-G = \operatorname{diag}(L_z, L_y, L_x)
+G = \operatorname{diag}(L_z, L_x, L_y)
 \]
 acting on wires $A$ and $C$ with wire $B$ as spectator; equivalently
 \[
 G = \sum_{i=0}^{2} |i\rangle\langle i|_A \otimes I_B \otimes M_i,
-\qquad M_0 = L_z,\; M_1 = L_y,\; M_2 = L_x.
+\qquad M_0 = L_z,\; M_1 = L_x,\; M_2 = L_y.
 \]
 
 Now suppose $G \in \mathfrak{so}(9)_{AB}\oplus\mathfrak{so}(3)_C$. Any
@@ -509,9 +510,10 @@ to the direct sum.)
 \end{proof}
 
 \begin{remark}
-The SWAP gate does not enlarge the algebra: $\text{SWAP}(A,B)$ is
-contained in the Lie closure of the local generators, acting as a
-discrete Weyl group element.
+The SWAP gate does not enlarge the algebra: $\text{SWAP}(A,B)$ normalizes
+$\mathfrak{so}(3)_A\oplus\mathfrak{so}(3)_B$ and acts as a discrete
+Weyl-group element exchanging the two factors, but it is not itself
+contained in the Lie algebra $\mathfrak{so}(3)_A\oplus\mathfrak{so}(3)_B$.
 \end{remark}
 
 \subsection{Disjoint Support Lemma}
@@ -705,10 +707,10 @@ the determinant providing the splitting, and $T_{\text{inv}}$ provides
 an element of determinant $2$ (a generator of $\GF(3)^\times \cong C_2$),
 the combined group is the full $\GL(3,3)$.
 
-The group acts transitively on the $27$ non-zero vectors of $\GF(3)^3$
+The group acts transitively on the $26$ non-zero vectors of $\GF(3)^3$
 (the zero vector $|000\rangle$ is a fixed point). The stabilizer of any
-non-zero basis state is a maximal parabolic subgroup of $\GL(3,3)$
-isomorphic to $\GL(2,3) \ltimes \GF(3)^2$ of order $2 \cdot 144 = 288$,
+non-zero basis state is isomorphic to the affine group
+$\GL(2,3) \ltimes \GF(3)^2 \cong \AGL(2,3)$ of order $48 \cdot 9 = 432$,
 while the stabilizer of $|000\rangle$ is the full $\GL(3,3)$.
 \end{proof}
 
@@ -731,7 +733,9 @@ $S_{27}$ acting on the basis states (excluding the fixed point
 $|000\rangle$). Its linear action on $\mathbb{R}^{27}$ preserves the
 decomposition of $\mathbb{R}^{27}$ into the all-ones vector (the fixed
 point under $\GL(3,3)$) and its 26-dimensional orthogonal complement.
-The $\GL(3,3)$ action on this 26-dimensional subspace is irreducible.
+The $\GL(3,3)$ action on this 26-dimensional subspace is not
+irreducible: it decomposes as a direct sum of three irreducible
+representations (of dimensions $1$, $12$, and $13$).
 
 The Lie algebra $\mathfrak{so}(27)$ contains the Lie algebra generated
 by the permutation matrices of $\GL(3,3)$. However, the continuous
@@ -839,9 +843,10 @@ lines in $\mathbb{R}^{27}$ is $M \le 378$, far above our 27 points.
 \subsection{Antipodal Extension}
 
 By including both $|ijk\rangle$ and $-|ijk\rangle$, we obtain 54 points
-that achieve the full Rankin bound. This antipodal signaling doubles the
-minimum Euclidean distance to $2$, providing a 3\,dB SNR advantage over
-the orthonormal basis alone. However, as the basis states are phase-less
+that achieve the full Rankin bound. Each antipodal pair is separated by
+the diameter $2$ of $S^{26}$, the largest possible distance between two
+points of the sphere; such antipodal signaling carries the classical
+$3$\,dB energy advantage of antipodal over orthogonal signaling. However, as the basis states are phase-less
 (real, not complex), the antipodal pairs represent the same line through
 the origin, so the natural signal set consists of 27 lines, not 54
 distinct signals.
@@ -952,7 +957,7 @@ component above the transmitted component).
 
 A simple upper bound is given by the union bound:
 \[
-P_e(\sigma) \le 26 \cdot Q\!\left(\frac{1}{2\sigma}\right),
+P_e(\sigma) \le 26 \cdot Q\!\left(\frac{1}{\sqrt2\,\sigma}\right),
 \]
 where $Q(x) = \frac{1}{\sqrt{2\pi}}\int_x^\infty e^{-t^2/2}\,dt$ is the
 Gaussian tail probability. This bound is tight for low noise and provides
@@ -982,11 +987,11 @@ Numerical integration gives:
 
 \begin{itemize}
 \item \textbf{Reliable communication} ($P_e < 10^{-3}$): requires
-$\sigma < 0.34$, corresponding to SNR $> 9.4$ dB.
+$\sigma < 0.18$, corresponding to SNR $> 14.9$ dB.
 \item \textbf{Marginal communication} ($P_e < 10^{-1}$): requires
-$\sigma < 0.45$, corresponding to SNR $> 6.9$ dB.
-\item \textbf{Unreliable regime} ($P_e > 0.5$): occurs for $\sigma > 0.56$,
-SNR $< 5.0$ dB.
+$\sigma < 0.29$, corresponding to SNR $> 10.7$ dB.
+\item \textbf{Unreliable regime} ($P_e > 0.5$): occurs for $\sigma > 0.51$,
+SNR $< 5.9$ dB.
 \end{itemize}
 
 \subsection{WTA Decoding vs.\ ML Decoding}
@@ -1091,8 +1096,8 @@ outperform the orthogonal basis while maintaining a tractable decoding
 algorithm?
 
 \item \textbf{Equiangular lines in $\mathbb{R}^{27}$.} The Gerzon
-bound gives $M \le 378$; the current lower bound is 27 (our ternary
-code). The gap is enormous. We have determined that CNOT gates (directions
+bound gives $M \le 378$; the current lower bound is 28 (a regular simplex
+in $\mathbb{R}^{27}$). The gap is enormous. We have determined that CNOT gates (directions
 both ways) together with $T_{\text{inv}}$ on each wire generate the
 general linear group $\operatorname{GL}(3,3)$ of order $11\,232$,
 acting on the 27 basis states with a single fixed point
@@ -1110,7 +1115,7 @@ Known equiangular line sizes in nearby dimensions are:
 \mathbb{R}^7: & 28 \text{ ($E_7$ root system)} \\
 \mathbb{R}^{23}: & 276 \text{ (Leech lattice)} \\
 \mathbb{R}^{24}: & 276 \text{ (related)} \\
-\mathbb{R}^{27}: & 27 \le M \le 378 \text{ (open)}
+\mathbb{R}^{27}: & 28 \le M \le 378 \text{ (open)}
 \end{array}
 \]
 Determining the true maximum in $\mathbb{R}^{27}$ is an open problem
@@ -1131,7 +1136,7 @@ constraints of the gate set.
 \item \textbf{Physical implementation.} The framework assumes exact
 linear operations on continuous analog amplitudes. Whether such
 operations can be realized with sufficient precision (and whether the
-noise threshold $\sigma < 0.34$ is physically achievable) remains open.
+noise threshold $\sigma < 0.18$ is physically achievable) remains open.
 Two promising physical platforms are:
   \begin{enumerate}[label=\alph*.]
   \item \textbf{Metaplectic anyons} (as in Bocharov et
@@ -1205,10 +1210,10 @@ remaining 26 states.
 \item \textbf{Spherical code}: The 27 basis states form a tight 1-tight
 frame on $S^{26}$, achieving 50\% of the Rankin bound. The winner-take-all
 measurement provides a discrete readout with a noise threshold
-$\sigma < 0.34$ for reliable ML decoding.
+$\sigma < 0.18$ for reliable ML decoding.
 
 \item \textbf{Open problems}: The maximal number of equiangular lines in
-$\mathbb{R}^{27}$ remains unknown (between 27 and 378). Error-correcting
+$\mathbb{R}^{27}$ remains unknown (between 28 and 378). Error-correcting
 codes in the continuous orbit space and physical implementation in
 metaplectic anyon or optical platforms are directions for future work.
 \end{enumerate}
