@@ -1,7 +1,7 @@
 # Ternary CNOT Universality
 
 ### Quantum-Mimetic Ternary Systems: Universal Generation of so(27) and su(27) from Local Gates and Minimal CNOT Couplings
-Please excuse the lack of LaTeX syntax in this README.
+Please excuse the lack of proper LaTeX syntax in this README.
 
 **Author:** ATroubledSnake\
 **Proof of (date of) authorship:** OpenTimestamps proof included in `/ots`, they verify against the LaTeX source files, not the PDFs
