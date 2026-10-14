@@ -16,4 +16,4 @@ We prove that for $k$ ternary wires/qutrits, exactly k-1 ternary CNOT gates (for
 - `/dynkin`: Paper used for citation 6, E. B. Dynkin , “Semisimple subalgebras of semisimple Lie algebras”.
 
 ## Status
-Our only MIT licensed discover, enjoy, and we would appreciate feedback, any corrections would mean the world to us.
+Our only MIT licensed discovery/project, enjoy, and we would appreciate feedback, any corrections would mean the world to us.
