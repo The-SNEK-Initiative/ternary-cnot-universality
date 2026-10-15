@@ -3,6 +3,8 @@
 ### Quantum-Mimetic Ternary Systems: Universal Generation of so(27) and su(27) from Local Gates and Minimal CNOT Couplings
 Please excuse the lack of proper LaTeX syntax in this README.
 
+To answer some question I got, "why is this not on arXiv?" and any similar ones, arXiv is a not a platform that allows anonymity, weird as it may be to want such a thing for most of academia, it is my wish to remain pseudo anonymous. No, viXra is NOT a viable substitute platform.
+
 **Author:** ATroubledSnake\
 **Proof of (date of) authorship:** OpenTimestamps proof included in `/ots`, they verify against the LaTeX source files, not the PDFs
 
